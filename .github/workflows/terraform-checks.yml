@@ -1,0 +1,30 @@
+name: Terraform Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.0
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Validate Stacks
+        run: |
+          for dir in stacks/*/*; do
+            if [ -f "$dir/main.tf" ]; then
+              echo "Validating $dir"
+              cd "$dir"
+              terraform init -backend=false
+              terraform validate
+              cd -
+            fi
+          done
