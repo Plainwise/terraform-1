@@ -1,0 +1,11 @@
+# Copy this file to 'terraform.auto.tfvars' and fill in your values.
+# 'terraform.auto.tfvars' is ignored by git, so it is safe for secrets.
+
+# List of SSH key fingerprints or IDs (get them from DigitalOcean dashboard)
+ssh_keys = [
+  "aa:bb:cc:dd:ee:ff:11:22:33:44:55:66:77:88:99:00",
+  "12345678"
+]
+
+# Region (default is ams3, uncomment to change)
+# region = "nyc1"
