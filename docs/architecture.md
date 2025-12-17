@@ -9,7 +9,7 @@ The repository is designed around the concept of **Stacks**. A Stack is a collec
 ## Isolation Strategy
 We enforce isolation at two levels to minimize "blast radius":
 
-### 1. Environment Isolation (`stacks/prod` vs `stacks/dev`)
+### 1. Environment Isolation (`stacks/prod` vs `stacks/staging` vs `stacks/dev`)
 Resources for different environments are kept effectively air-gapped in the folder structure. There is no shared state between Prod and Dev. This prevents accidental changes in Development from propagating to Production.
 
 ### 2. Domain Isolation (`stacks/prod/dns` vs `stacks/prod/network`)
